@@ -11,6 +11,7 @@ namespace Hobby.ViewModels
     {
         private string text;
         private string description;
+        private string ekstra;
 
         public NewItemViewModel()
         {
@@ -38,6 +39,13 @@ namespace Hobby.ViewModels
             set => SetProperty(ref description, value);
         }
 
+        public string Ekstra
+        {
+            get => ekstra;
+            set => SetProperty(ref ekstra, value);
+        }
+
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
@@ -53,7 +61,8 @@ namespace Hobby.ViewModels
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                Description = Description
+                Description = Description,
+                Ekstra = Ekstra
             };
             
             await DataStore.AddItemAsync(newItem);

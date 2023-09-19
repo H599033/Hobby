@@ -12,6 +12,7 @@ namespace Hobby.ViewModels
         private string itemId;
         private string text;
         private string description;
+        private string ekstra;
         public string Id { get; set; }
 
         public string Text
@@ -26,6 +27,11 @@ namespace Hobby.ViewModels
             set => SetProperty(ref description, value);
         }
 
+        public string Ekstra
+        {
+            get => ekstra;
+            set => SetProperty(ref ekstra, value);
+        }
         public string ItemId
         {
             get
@@ -47,6 +53,7 @@ namespace Hobby.ViewModels
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
+                Ekstra = item.Ekstra;
             }
             catch (Exception)
             {
