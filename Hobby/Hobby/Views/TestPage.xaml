@@ -30,6 +30,7 @@
                 Text="Aktivitet side"
                 Clicked="AktivitetSide_clicked"/>
 
+
         </Grid>
 
         <Label
