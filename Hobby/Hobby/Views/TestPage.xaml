@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:Hobby.ViewModels"
+    x:DataType="viewmodels:TestPageVModel"
+    x:Class="Hobby.Views.TestPage">
+    <!--x:DataType over gjør henting raskere viktig å ta med-->
+    <!--Importer metoder fra en annen class. ViewModels er brukt her-->
+    <ContentPage.BindingContext>
+        <viewmodels:TestPageVModel/>
+
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+    <Grid RowDefinitions="*,Auto,Auto,*">
+
+        <Grid RowDefinitions="*,Auto,Auto,*"
+                Grid.Row="0">
+            <Button
+                VerticalOptions="StartAndExpand"
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Finn Hobby"
+                Clicked="FinnHobbySide_clicked"/>
+            <Button
+                VerticalOptions="StartAndExpand"
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Aktivitet side"
+                Clicked="AktivitetSide_clicked"/>
+
+        </Grid>
+
+        <Label
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Text="{Binding CountDisplay}"
+            />
+
+        <Label
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Text="{Binding CountDisplay}"/>
+
+        <Grid RowDefinitions="*,Auto,Auto,*"
+                Grid.Row="2">
+
+        <Button
+            Command="{Binding IncreasCount}"
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Click me"/>
+
+        <Button
+            Command="{Binding DecreasCount}"
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="Reset klikked"/>
+
+        </Grid>
+       
+
+    </Grid>
+        
+    </ContentPage.Content>
+
+   
+</ContentPage>
+

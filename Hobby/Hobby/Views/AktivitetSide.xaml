@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Hobby.Views.AktivitetSide">
+    <ContentPage.Content>
+        <StackLayout>
+        <Label Text="Opprett Aktivitet" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+
+        <!-- Entry for å skrive inn navnet på aktiviteten -->
+        <Entry x:Name="aktivitetsNavnEntry" Placeholder="Skriv inn aktivitetsnavn" />
+
+        <!-- Knapp for å opprette aktiviteten -->
+        <Button Text="Opprett Aktivitet" Clicked="OpprettAktivitet_Clicked" />
+
+        <!-- StackLayout for å vise aktivitetsnavnene -->
+        <StackLayout x:Name="AktiviteterLayout">
+            <!-- Aktivitetsnavnene vil bli lagt til her programmatiske i kodenbehind-filen -->
+        </StackLayout>
+    </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>
+

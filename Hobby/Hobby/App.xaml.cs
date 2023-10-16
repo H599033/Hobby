@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Hobby.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Hobby.Services;
-using Hobby.Views;
 
 namespace Hobby
 {
@@ -13,8 +10,7 @@ namespace Hobby
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new FinnHoobySide());
         }
 
         protected override void OnStart ()
