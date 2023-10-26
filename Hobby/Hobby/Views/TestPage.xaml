@@ -9,8 +9,9 @@
     <!--Importer metoder fra en annen class. ViewModels er brukt her-->
     <ContentPage.BindingContext>
         <viewmodels:TestPageVModel/>
-
     </ContentPage.BindingContext>
+
+
     <ContentPage.Content>
 
     <Grid RowDefinitions="*,Auto,Auto,*">
@@ -30,36 +31,32 @@
                 Text="Aktivitet side"
                 Clicked="AktivitetSide_clicked"/>
 
-
         </Grid>
 
-        <Label
-            Grid.Row="1"
-            HorizontalOptions="Center"
-            Text="{Binding CountDisplay}"
-            />
+           <ListView BackgroundColor="Transparent">
+         <ListView.ItemsSource>
+             <x:Array Type="{x:Type x:String} ">
+                 <x:String> Item one </x:String>
+                 <x:String> Item two </x:String>
+                 <x:String> Item three </x:String>
 
-        <Label
-            Grid.Row="1"
-            HorizontalOptions="Center"
-            Text="{Binding CountDisplay}"/>
+             </x:Array>
 
-        <Grid RowDefinitions="*,Auto,Auto,*"
-                Grid.Row="2">
+         </ListView.ItemsSource>
+         <ListView.ItemTemplate>
+             <DataTemplate>
+                 <TextCell Text="{Binding .}"
+                           Detail="{Binding .}"/>
+                 <!-- <ImgCell Text="{Binding.}"
+                                Detail ="{Binding .}"-->
+                 <!--Under for swither -->
+                <!-- <SwitchCell Text="{Binding ."/> --> 
 
-        <Button
-            Command="{Binding IncreasCount}"
-            Grid.Row="2"
-            Grid.Column="0"
-            Text="Click me"/>
+             </DataTemplate>
 
-        <Button
-            Command="{Binding DecreasCount}"
-            Grid.Row="2"
-            Grid.Column="1"
-            Text="Reset klikked"/>
+         </ListView.ItemTemplate> 
 
-        </Grid>
+    </ListView>
        
 
     </Grid>

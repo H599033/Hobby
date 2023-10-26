@@ -2,23 +2,90 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Hobby.Views.AktivitetSide">
-    <ContentPage.Content>
-        <StackLayout>
-        <Label Text="Opprett Aktivitet" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-
-        <!-- Entry for å skrive inn navnet på aktiviteten -->
-        <Entry x:Name="aktivitetsNavnEntry" Placeholder="Skriv inn aktivitetsnavn" />
-
-        <!-- Knapp for å opprette aktiviteten -->
-        <Button Text="Opprett Aktivitet" Clicked="OpprettAktivitet_Clicked" />
-
-        <!-- StackLayout for å vise aktivitetsnavnene -->
-        <StackLayout x:Name="AktiviteterLayout">
-            <!-- Aktivitetsnavnene vil bli lagt til her programmatiske i kodenbehind-filen -->
-        </StackLayout>
-    </StackLayout>
+    xmlns:ViewModels="clr-namespace:Hobby.ViewModels"
+    xmlns:model ="clr-namespace:Hobby.Models"
+    x:Class="Hobby.Views.AktivitetSide"
+    x:DataType="ViewModels:AktivitetSide_VModel">
+    
+    <ContentPage.BindingContext>
+        <ViewModels:AktivitetSide_VModel/>
+    </ContentPage.BindingContext>
+    
+    <ListView
+        
+        ItemSelected="ListView_ItemSelected"
+        ItemTapped="ListView_ItemTapped"
        
-    </ContentPage.Content>
+        CachingStrategy="RecycleElement"
+        BackgroundColor="white"
+        ItemsSource="{Binding aktivitet}"
+        GroupDisplayBinding="{Binding key}"
+        HasUnevenRows="True"
+        SeparatorColor="red"
+        SeparatorVisibility="None"
+        IsRefreshing="{Binding IsBusy,Mode=OneWay}"
+        RefreshCommand="{Binding RefreshCommand}"
+        >
+
+        <!--HasUnevenRows Lar størrelsen på ListView være udefinert. så trenger ikke spesifisere størrelsen.-->
+         
+         <ListView.ItemTemplate>
+             <!--Husk å importe modle over.-->
+             <DataTemplate x:DataType="model:Aktivitet" >
+                 <!--CollectionView trenger ikke ViewCell-->
+                 <ViewCell>
+                     <ViewCell.ContextActions>
+                         <MenuItem Text=" favoritt" Clicked="MenuItem_Clicked"/>
+                         <MenuItem Text=" favoritt"/>
+                     </ViewCell.ContextActions>
+                     <Grid Padding="10">
+                         <Frame CornerRadius="20"
+                                HasShadow="true"
+                                BorderColor="LightGreen"
+                                BackgroundColor="white">
+                             <StackLayout>
+                                 <Label VerticalOptions="Center"
+                                FontSize="30"
+                                TextColor="Black"
+                                Text="{Binding AktivitetNavn}"
+                                 />
+                                 <Label VerticalOptions="Center"
+                                FontSize="30"
+                                TextColor="DarkGray"
+                                Text="{Binding Katogori}"/>
+                             </StackLayout>
+                             
+                         </Frame>                         
+                     </Grid>
+
+                 </ViewCell> 
+
+             </DataTemplate>
+
+         </ListView.ItemTemplate>
+
+        <ListView.Header>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Header"
+                       TextColor="Gray"
+                       />
+
+            </StackLayout>
+            
+        </ListView.Header>
+        <ListView.Footer>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Footer"
+                       TextColor="Gray"
+                       BackgroundColor="Red"/>
+
+            </StackLayout>
+            
+        </ListView.Footer>
+         
+    </ListView>
+
 </ContentPage>
 
+ 

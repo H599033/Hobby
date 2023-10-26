@@ -50,7 +50,7 @@ namespace Hobby.Services
                 var aktivitet = new Aktivitet
                 {
                     AktivitetNavn = aktivitetNavn,
-                    AdMin = adminBruker,
+                    AdMin = (Bruker)adminBruker,
                     Katogori = katogori
                 };
 

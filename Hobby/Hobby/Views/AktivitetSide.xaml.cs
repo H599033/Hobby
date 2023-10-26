@@ -14,47 +14,26 @@ namespace Hobby.Views
 			InitializeComponent ();
         }
 
-        private async void OpprettAktivitet_Clicked(object sender, EventArgs e)
+        private async void ListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            try
-            {
-                string nyttAktivitetsNavn = aktivitetsNavnEntry.Text;
-                if (!string.IsNullOrEmpty(nyttAktivitetsNavn))
-                {
-                    // Opprett ny aktivitet med navn i databasen
-                    await AktivitetService.LagAktivitetForTest(nyttAktivitetsNavn);
-
-                    // Oppdater visningen av aktiviteter på siden
-                    OppdaterAktivitetsVisning();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Logg unntaket for feilsøking
-                Debug.WriteLine($"Feil: {ex.Message}");
-            }
+            var aktivitet = ((ListView)sender).SelectedItem as Aktivitet;
+            if (aktivitet == null)
+                return;
+            await DisplayAlert("Aktivitet valgt ", aktivitet.AktivitetNavn, "ok");
         }
 
-        private async void OppdaterAktivitetsVisning()
+        void ListView_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            // Hent alle aktiviteter fra databasen
-            var alleAktiviteter = await AktivitetService.AlleAktiviteter();
-
-            // Fjern eksisterende Label-elementer fra stackLayout
-            // AktiviteterLayout refereres i XAML koden.
-            AktiviteterLayout.Children.Clear();
-
-            // Oppdater visningen på siden med alle aktivitetene
-            foreach (var aktivitet in alleAktiviteter)
-            {
-                var label = new Label
-                {
-                    Text = aktivitet.AktivitetNavn
-                };
-                AktiviteterLayout.Children.Add(label);
-            }
+            //hvis noe er selected så blir den av selected med en gang 
+            ((ListView)sender).SelectedItem = null;
         }
 
+        private async void MenuItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var aktivitet = ((MenuItem)sender).BindingContext as Aktivitet;
+
+            await DisplayAlert("Aktivitet ", aktivitet.AktivitetNavn, " til favorit");
+        }
     }
 }
-
+ 

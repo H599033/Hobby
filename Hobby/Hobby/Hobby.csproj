@@ -10,6 +10,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
@@ -24,6 +25,9 @@
   <ItemGroup>
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\13.2.1.2\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v13.0\Mono.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\13.2.2.0\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v13.0\Mono.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

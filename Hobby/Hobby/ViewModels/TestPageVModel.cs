@@ -2,12 +2,13 @@
 using System.Windows.Input;
 using Android.Content.Res;
 using Hobby.Views;
+using MvvmHelpers;
 using Xamarin.Forms;
 
 namespace Hobby.ViewModels
 {
-	public class TestPageVModel : BindableObject
-	{
+    public class TestPageVModel : ViewModelBase
+    {
 		public TestPageVModel()
 		{
             IncreasCount = new Command(OnIncreas);
@@ -15,7 +16,7 @@ namespace Hobby.ViewModels
         }
         public ICommand IncreasCount { get; }
         public ICommand DecreasCount { get; }
-
+        ICommand FinnHobbySide { get; }
 
 
         int count = 0;
@@ -24,16 +25,7 @@ namespace Hobby.ViewModels
         public String CountDisplay
         {
             get => countDisplay;
-            set
-            {
-                if (value == countDisplay)
-                {
-                    return;
-                }
-                countDisplay = value;
-
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref countDisplay, value);
         }
 
         void OnIncreas()

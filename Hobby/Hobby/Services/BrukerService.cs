@@ -43,7 +43,7 @@ namespace Hobby.Services
             }
             else
             {
-
+                //TODO brukernavn finnes melding
             }
         }
 
@@ -53,24 +53,6 @@ namespace Hobby.Services
             //TODO
         }
 
-        //Bruker metoden i AktivitetService, men skal lagre den i listen sin. Admin er bruerNavn til den som lager
-        public static async Task LagAktivitet(String admin, String aktivitetNavn)
-        {
-            await Init();
-            //TODO
-        }
-        // Tilsvarende over
-        public static async Task FjernAktivitet(String admin, String aktivitetNavn)
-        {
-            await Init();
-            //TODO
-        }
-        //Bruker metoden i AktivitetService, men skal lagre den i listen sin.
-        public static async Task MeldPaaAktivitet(String brukerNavn, String aktivitetNavn)
-        {
-            await Init();
-            //TODO
-        }
         // Tilsvarende over
         public static async Task MeldAvAktivitet(String brukerNavn, String aktivitetNavn)
         {
@@ -79,12 +61,12 @@ namespace Hobby.Services
         }
 
         //Denne bør kun returnere en bruker siden brukerNavn er Unique
-        public static async Task<Bruker> FinnBruker(String brukerNavn)
+        public static async Task<IEnumerable<Bruker>> FinnBruker(String brukerNavn)
         {
             await Init();
             var query = db.Table<Bruker>().Where(b => b.BrukerNavn.Equals(brukerNavn));
             var bruker = await query.FirstOrDefaultAsync();
-            return bruker;
+            return (IEnumerable<Bruker>)bruker;
         }
 
         public static async Task<bool> brukerNavnFinnes(String brukerNavn)

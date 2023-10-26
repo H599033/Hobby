@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace Hobby.Views
 {
 
@@ -25,6 +24,7 @@ namespace Hobby.Views
         {
             await Navigation.PushAsync(new FinnHoobySide());
         }
+
 
         private async void FinnHobbySide_clicked(object sender, EventArgs e)
         {

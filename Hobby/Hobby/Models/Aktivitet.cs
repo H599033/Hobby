@@ -17,7 +17,6 @@ namespace Hobby.Models
 		public Aktivitet()
 		{
 			MeldtPaa = new List<Bruker>();
-			
 		}
 	}
 }
